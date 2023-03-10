@@ -1,5 +1,25 @@
-controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+
+grr_indexnolocale:
+  path: /
+  controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController
+  defaults:
+    route: 'grr_homepage'
+    # parameter
+    _locale: '%kernel.default_locale%'
+
+grr_login:
+    path: /login
+    controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController
+    defaults:
+      route: 'app_login'
+      # parameter
+      _locale: '%kernel.default_locale%'
+grr:
+  prefix:
+    fr: '/fr'
+    en: '/en'
+    nl: '/nl'
+  resource: "@GrrBundle/src/Controller/"
+  type:     annotation
+  requirements:
+    _locale: fr|en|de
